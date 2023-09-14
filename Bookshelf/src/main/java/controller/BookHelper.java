@@ -26,10 +26,9 @@ public class BookHelper {
 	public void removeBook(Book toDelete) {
 		EntityManager manager = emfactory.createEntityManager();
 		manager.getTransaction().begin();
-		TypedQuery<Book> typedQuery = manager.createQuery("select li from Book li where li.author = :selectedAuthor and li.title = :selectedTitle", Book.class);
-		//Substitute	parameter	with	actual	data	from	the	toDelete	item
-		typedQuery.setParameter("selectedStore", toDelete.getAuthor());
-		typedQuery.setParameter("selectedItem", toDelete.getTitle());
+		manager.remove(manager.find(Book.class, toDelete.getId()));
+		manager.getTransaction().commit();
+		manager.close();
 		
 	}
 	

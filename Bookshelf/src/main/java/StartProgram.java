@@ -20,11 +20,10 @@ public class StartProgram {
 	}
 	
 	private static void deleteBook() {
-		System.out.print("Enter the author to delete: ");
-		String author = in.nextLine();
-		System.out.print("Enter the title to delete: ");
-		String title = in.nextLine();
-		Book toDelete = new Book(author, title);
+		Book toDelete = new Book();
+		viewTheList();
+		System.out.println("Enter the ID number of the book to delete");
+		toDelete.setId(in.nextInt());
 		bh.removeBook(toDelete);
 	}
 	
